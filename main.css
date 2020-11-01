@@ -1,9 +1,9 @@
 /* 
 https://colorhunt.co/palette/206664
 #eeeeee 
-32e0c4
-0d7377
-212121
+#32e0c4
+#0d7377
+#212121
 */
 
 
@@ -22,23 +22,25 @@ https://colorhunt.co/palette/206664
     grid-template-columns: 250px auto;
     grid-template-rows: 85vh 15vh;
 
-    background-color: #eeeeee;
+    background-color: #181818;
 }
 
 aside.users {
     grid-area: UA;
     grid-column: 0;
-    background-color: yellow;
-    background-color: #eeeeee;
+    color: white;
+    background-color: #181818;
     border-right: 3px solid #21212121;
 }
 .users .user{
-    /* background-color: red; */
     padding: 2px 5px;
     display:flex;
     justify-content: flex-start;
     align-items: center;
     border-bottom: 3px solid #21212109;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    overflow:hidden;
 }
 
 .avatar {
@@ -59,18 +61,18 @@ aside.users {
     width: 80%;
     margin: 5px 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     padding: 10px;
     align-self: flex-start;
 }
 
-.messages .message-owner {
+.messages .owner {
     width: 80%;
     margin: 5px 10px;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     align-self: flex-end;
     padding: 10px;
@@ -82,7 +84,7 @@ aside.users {
     color: #eeeeee;
     border-radius: 0 10px 10px 10px;
 }
-.message-owner .textContainer {
+.message.owner .textContainer {
     background-color:#0d7377cc;
     padding:10px;
     color: #eeeeee;
@@ -105,7 +107,7 @@ aside.users {
     font-size: 14px;
     color:#eeec
 }
-.message-owner .time {
+.message.owner .time {
     color:#eeed;
 }
 
@@ -115,23 +117,14 @@ aside.users {
     border-radius: 60px;
     margin-right: 20px;
 }
-.message-owner .uImg,.message-owner .author{
+.message.owner .uImg,.owner .author{
     display:none;
 }
-.userInput{
-    grid-area: IA;
-    height: 15vh;
-    width: 100%;
-    display:flex;
-    align-items: center;
-    justify-content:space-between;
-}
 button{
-    width: 5%;
-    min-width: 60px;
+    width: 60px;
     height: 60px;
     border-radius: 5px;
-    color:#212121;
+    color:#32e0c4;
     border:none;
     outline:none;
     background-color: transparent;
@@ -139,4 +132,45 @@ button{
 }
 i{
     font-size: 30pt;
+}
+.userInput{
+    grid-area: IA;
+    height: 15vh;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    
+}
+.userInput input, .userInput input:focus{
+    background-color:#212121;
+    outline: none;
+    border:none;
+    padding: 15px;
+    border-radius:25px;
+    width: 75%;
+    color:#eee;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.send{
+    position: absolute;
+    right: 20px;
+    /* color:white; */
+    border-radius: 60px;
+    background-color:#0d7377 ;
+    color: #32e0c4;
+}
+.send:disabled{
+    background-color: #32e0c466;
+    color: gray;
+}
+@media  screen and (max-width: 768px) {
+    .container{
+        grid-template-areas: "MA"
+        "IA";
+        grid-template-columns: 100%;
+        grid-template-rows: 85vh 15vh;
+    }
+    
 }
