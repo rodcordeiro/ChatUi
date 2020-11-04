@@ -34,20 +34,17 @@
         <aside class="users">
             <div class="user">
                 <img src="https://rodcordeiro.github.io/shares/img/avatar.png" alt="UserPic" class='avatar'>
-                <span>UserName</span>
+                <span>Example user</span>
             </div>
             <div class="user">
                 <img src="https://rodcordeiro.github.io/shares/img/avatar.png" alt="UserPic" class='avatar'>
-                <span>UserName</span>
+                <span>AnotherExampleUser</span>
             </div>
             <div class="user">
                 <img src="https://rodcordeiro.github.io/shares/img/avatar.png" alt="UserPic" class='avatar'>
-                <span>UserName</span>
+                <span>AnotherExampleUserAnotherExampleUser</span>
             </div>
-            <div class="user">
-                <img src="https://rodcordeiro.github.io/shares/img/avatar.png" alt="UserPic" class='avatar'>
-                <span>UserName</span>
-            </div>
+            
         </aside>
         <section class="chat">
             <div class="messages">
@@ -63,50 +60,7 @@
                         <p class="time">12:20</p>
                     </div>
                 </div>
-                <div class="message-owner">
-                    <img src="https://rodcordeiro.github.io/shares/img/avatar.png" alt="User Image" class="uImg">
-                    <div class="textContainer">
-                        <p class="author">
-                            RodCordeiro
-                        </p>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet repudiandae, repellendus voluptas nemo a non repellat reiciendis ea quis aspernatur sed nobis explicabo, doloremque exercitationem voluptatem nulla qui accusantium!
-                            <br/>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet repudiandae, repellendus voluptas nemo a non repellat reiciendis ea quis aspernatur sed nobis explicabo, doloremque exercitationem voluptatem nulla qui accusantium!
-                            <br/>
-                            <br/>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet repudiandae, repellendus voluptas nemo a non repellat reiciendis ea quis aspernatur sed nobis explicabo, doloremque exercitationem voluptatem nulla qui accusantium!
-                        </p>
-                        <p class="time">12:20</p>
-                    </div>
-                </div>
-                <div class="message">
-                    <img src="https://rodcordeiro.github.io/shares/img/avatar.png" alt="User Image" class="uImg">
-                    <div class="textContainer">
-                        <p class="author">
-                            RodCordeiro
-                        </p>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet repudiandae, repellendus voluptas nemo a non repellat reiciendis ea quis aspernatur sed nobis explicabo, doloremque exercitationem voluptatem nulla qui accusantium!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet repudiandae, repellendus voluptas nemo a non repellat reiciendis ea quis aspernatur sed nobis explicabo, doloremque exercitationem voluptatem nulla qui accusantium!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet repudiandae, repellendus voluptas nemo a non repellat reiciendis ea quis aspernatur sed nobis explicabo, doloremque exercitationem voluptatem nulla qui accusantium!
-                        </p>
-                        <p class="time">12:20</p>
-                    </div>
-                </div>
-                <div class="message">
-                    <img src="https://rodcordeiro.github.io/shares/img/avatar.png" alt="User Image" class="uImg">
-                    <div class="textContainer">
-                        <p class="author">
-                            RodCordeiro
-                        </p>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet repudiandae, repellendus voluptas nemo a non repellat reiciendis ea quis aspernatur sed nobis explicabo, doloremque exercitationem voluptatem nulla qui accusantium!
-                        </p>
-                        <p class="time">12:20</p>
-                    </div>
-                </div>
-                
+                 -->
             </div>
             <div class="userInput">
                 <button type="button" class="emoji" onclick="showEmojis()">
@@ -114,7 +68,10 @@
                 </button>
                 <div id="emojis" class="hidden">
                 </div>
-
+                <input type="text" name="msgInput" id="msgInput" placeholder="Type your message">
+                <button type="button" class="send" onclick="submitHandler()" >
+                    <i data-feather="send"></i>
+                </button>
                 
             </div>
         </section>
@@ -122,10 +79,21 @@
     <script>
         feather.replace()
         let user = {
+<<<<<<< HEAD
             id: 666,
             name: "teste",
             img: "teste"
         }
+=======
+            id: 2,
+            name: "RodCordeiro",
+            image: "https://rodcordeiro.github.io/shares/img/me.png"
+        };
+
+        
+        
+>>>>>>> d2f05241ac2d70e413bdd9891457a32f369bc6f2
     </script>
+    <script src="./main.js"></script>
 </body>
 </html>
