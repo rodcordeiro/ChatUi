@@ -31,7 +31,9 @@ aside.users {
     background-color: yellow;
     background-color: #eeeeee;
     border-right: 3px solid #21212121;
+    overflow-y: scroll;
 }
+
 .users .user{
     /* background-color: red; */
     padding: 2px 5px;
