@@ -1,3 +1,9 @@
+const admin = {
+    id: 1,
+    name: "Darth Vader",
+    image: "https://rodcordeiro.github.io/shares/img/vader.png"
+};
+
 function scroller(){
     let messages = document.querySelector(".messages")
     let scrollerValue = messages.scrollTop;
@@ -68,6 +74,7 @@ function getTime(){
 function submitHandler(data){
     let author = user;
     let text = document.getElementById("msgInput").value;
+    if (text == "") return;
     let time = getTime()
     
     let message = {
@@ -78,11 +85,15 @@ function submitHandler(data){
     }
 
     document.getElementById("msgInput").value = "";
+    let emojis = document.getElementById('emojis').classList
+    if(!emojis.contains('hidden')){
+        handleEmojisField()
+    }
     renderMessage(message)
-    
+
 }
 
-function handleUser(user){
+function createUser(user){
     let users = document.querySelector("aside.users");
 
     let userContainer = document.createElement('div')
@@ -106,53 +117,81 @@ function handleUser(user){
     users.appendChild(userContainer)
 
 }
-
-handleUser(user)
-
-let messages = [
-    {
-        id:1,
-        author:{
-            id: 1,
-            name: "RodCordeiro",
-            image: "./avatar.png"
-        },
-        text: "Teste",
-        time: "Sun Nov 01 2020 12:12:15 GMT-0300"
-    },{
-        id:2,
-        author:{
-            id: 2,
-            name: "RodCordeiro",
-            image: "https://rodcordeiro.github.io/shares/img/me.png"
-        },
-        text: "Outro teste",
-        time: "Sun Nov 01 2020 13:18:15 GMT-0300"
-    },{
-        id:4,
-        author:{
-            id: 2,
-            name: "RodCordeiro",
-            image: "https://rodcordeiro.github.io/shares/img/me.png"
-        },
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet repudiandae, repellendus voluptas nemo a non repellat reiciendis ea quis aspernatur sed nobis explicabo, doloremque exercitationem voluptatem nulla qui accusantium!",
-        time: "Sun Nov 01 2020 17:18:15 GMT-0300"
-    },{
-        id:5,
-        author:{
-            id: 3,
-            name: "RodRobo",
-            image: "https://rodcordeiro.github.io/shares/img/avatar.png"
-        },
-        text: "O chat já está funcional e passível de interação, agora é necessário implementar os emojis e o controle de usuário para incluir o socket.",
-        time: "Sun Nov 01 2020 17:18:15 GMT-0300"
-    }
-]
-
-messages.map(message=>renderMessage(message))
+function removeUser(id){
+    let users = document.querySelector("aside.users");
+}
+//SEND WITH ENTER KEY PRESS
 document.addEventListener("keypress",(e)=>{
     if(e.keyCode == 13) { 
         submitHandler()
-
     }
 })
+
+function handleEmojisField(){
+    let emojis = document.getElementById('emojis')
+    emojis.classList.toggle('hidden')
+}
+
+function handleEmojiSelection(item){
+    let text = document.getElementById("msgInput").value;
+    text += item
+    document.getElementById("msgInput").value = text;
+
+
+}
+
+class Emoji {
+    constructor(){
+        this.emojis = ["😂","😅","😔","😛","😁","😎","😡","😱","😑","😴","🤤","😪","😭","🤦","🤷‍♂️","‍🙏","💀","👍","👌","🤘","❤️","💔"]
+    }
+    build(){
+        this.emojis.forEach((item, i) => {
+            let emojis = document.getElementById('emojis')
+            let emoji = this.renderEmoji(item)
+            emojis.appendChild(emoji)            
+          });
+    }
+    renderEmoji(emoji){
+        let emojiContainer = document.createElement('span')
+        emojiContainer.setAttribute('onClick',`handleEmojiSelection("${emoji}")`)
+        
+        let emojiText = document.createTextNode(emoji)
+        emojiContainer.appendChild(emojiText)
+        
+        return emojiContainer
+    }
+}
+
+const emoji = new Emoji()
+
+async function getImage(){
+    let imgUrl = '';
+    const options = {
+        method: 'GET',
+        url: 'https://api.unsplash.com/photos/random',
+        headers: {Authorization: 'Client-ID Yt1wveu-M0PHerdD4xtN5e8mNAU6C3t_RKhNCxiWFIE'}
+    };
+    
+    await axios.request(options).then(function (response) {
+        imgUrl = response.data.urls.regular        
+    }).catch(function (error) {
+        imgUrl = "https://www.placecage.com/gif/600/600"
+        console.error(error);
+        
+    });
+    return imgUrl;
+}
+
+class User {
+    constructor(){
+        this.id = 0;
+        this.name = 'Unnamable'
+        this.image = 'https://www.placecage.com/c/600/601';
+    }
+    async create(id){
+        this.id = id
+        // this.name = prompt("Hey, what's your name?")
+        this.image = await getImage()
+        createUser(this)
+    }
+}

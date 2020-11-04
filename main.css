@@ -34,6 +34,20 @@ aside.users {
     overflow-y: scroll;
 }
 
+.users::-webkit-scrollbar{
+    width: 5px;
+}
+.users::-webkit-scrollbar-thumb{
+    background-color:#0d7377cc;
+    border-radius: 15px;
+    
+}
+.users::-webkit-scrollbar-track{
+    display: none;
+    /* background-color: #32e0c4; */
+}
+
+
 .users .user{
     padding: 2px 5px;
     display:flex;
@@ -43,6 +57,7 @@ aside.users {
     white-space:nowrap;
     text-overflow: ellipsis;
     overflow:hidden;
+    text-decoration-color: #32e0c4;
 }
 
 .avatar {
@@ -58,6 +73,18 @@ aside.users {
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
+}
+.messages::-webkit-scrollbar{
+    width: 10px;
+}
+.messages::-webkit-scrollbar-thumb{
+    background-color:#0d7377cc;
+    border-radius: 15px;
+    
+}
+.messages::-webkit-scrollbar-track{
+    display: none;
+    
 }
 .messages .message {
     width: 80%;
@@ -84,11 +111,13 @@ aside.users {
     background-color:#0d7377;
     padding:10px;
     color: #eeeeee;
+    max-width: 100%;
     border-radius: 0 10px 10px 10px;
 }
 .message.owner .textContainer {
     background-color:#0d7377cc;
     padding:10px;
+    max-width: 100%;
     color: #eeeeee;
     border-radius: 10px 0 10px 10px;
 }
@@ -99,6 +128,8 @@ aside.users {
 }
 .textContainer .text {
     margin-bottom: 10px;
+    white-space: word-break;
+    
     font-family: 'Courier New', Courier, monospace;
 }
 .textContainer .time {
@@ -143,6 +174,45 @@ i{
     align-items: center;
     
 }
+
+#emojis{
+    position: absolute;
+    height: 20vh;
+    width:20vh;
+    min-width: 150px;
+    bottom: 17vh;
+    left:UA;
+
+    overflow-y: scroll;
+    
+    
+    display: grid;
+    gap: 10%;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #004044cc;
+
+    font-size: 20px;
+    line-height:20px;
+    padding: 15px;
+    
+}
+#emojis::-webkit-scrollbar{
+    background-color: transparent;
+    width: 20%;
+}
+#emojis::-webkit-scrollbar-thumb{
+    background-color:#0d7377;
+    border-radius: 15px;
+    
+}
+#emojis::-webkit-scrollbar-track{
+    display: none;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
 .userInput input, .userInput input:focus{
     background-color:#212121;
     outline: none;
@@ -174,5 +244,10 @@ i{
         grid-template-columns: 100%;
         grid-template-rows: 85vh 15vh;
     }
+    #emojis{
+        position: absolute;
+        height: 30%;
+        left:5%;
     
+    }    
 }

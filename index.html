@@ -28,28 +28,17 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="container">
         <aside class="users">
-            <div class="user">
-                <img src="https://rodcordeiro.github.io/shares/img/avatar.png" alt="UserPic" class='avatar'>
-                <span>Example user</span>
-            </div>
-            <div class="user">
-                <img src="https://rodcordeiro.github.io/shares/img/avatar.png" alt="UserPic" class='avatar'>
-                <span>AnotherExampleUser</span>
-            </div>
-            <div class="user">
-                <img src="https://rodcordeiro.github.io/shares/img/avatar.png" alt="UserPic" class='avatar'>
-                <span>AnotherExampleUserAnotherExampleUser</span>
-            </div>
             
         </aside>
         <section class="chat">
             <div class="messages">
                 <div class="message">
-                    <img src="https://rodcordeiro.github.io/shares/img/avatar.png" alt="User Image" class="uImg">
+                    <img src="https://images.unsplash.com/photo-1603830187542-2014f36036e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyNzg0MX0" alt="User Image" class="uImg">
                     <div class="textContainer">
                         <p class="author">
                             RodCordeiro
@@ -63,10 +52,10 @@
                  -->
             </div>
             <div class="userInput">
-                <button type="button" class="emoji" onclick="showEmojis()">
+                <button type="button" class="emoji" onclick="handleEmojisField()">
                     <i data-feather="smile"></i>
                 </button>
-                <div id="emojis" class="hidden">
+                <div id="emojis" class="hidden">                    
                 </div>
                 <input type="text" name="msgInput" id="msgInput" placeholder="Type your message">
                 <button type="button" class="send" onclick="submitHandler()" >
@@ -76,24 +65,94 @@
             </div>
         </section>
     </div>
+    <script src="./main.js"></script>
     <script>
         feather.replace()
-        let user = {
-<<<<<<< HEAD
-            id: 666,
-            name: "teste",
-            img: "teste"
-        }
-=======
+        emoji.build()
+        const user = new User()
+        user.create(2)
+        console.log(user)
+    </script>
+    <script>
+        // TESTE REMOVER DEPOIS
+let messages = [
+    {
+        id:1,
+        author:{
+            id: 1,
+            name: "RodCordeiro",
+            image: "./avatar.png"
+        },
+        text: "Teste",
+        time: "Sun Nov 01 2020 12:12:15 GMT-0300"
+    },{
+        id:2,
+        author:{
             id: 2,
             name: "RodCordeiro",
             image: "https://rodcordeiro.github.io/shares/img/me.png"
-        };
+        },
+        text: "Outro teste",
+        time: "Sun Nov 01 2020 13:18:15 GMT-0300"
+    },{
+        id:4,
+        author:{
+            id: 2,
+            name: "RodCordeiro",
+            image: "https://rodcordeiro.github.io/shares/img/me.png"
+        },
+        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet repudiandae, repellendus voluptas nemo a non repellat reiciendis ea quis aspernatur sed nobis explicabo, doloremque exercitationem voluptatem nulla qui accusantium!",
+        time: "Sun Nov 01 2020 17:18:15 GMT-0300"
+    },{
+        id:5,
+        author:{
+            id: 3,
+            name: "RodRobo",
+            image: "https://rodcordeiro.github.io/shares/img/avatar.png"
+        },
+        text: "O chat já está funcional e passível de interação, agora é necessário implementar os emojis e o controle de usuário para incluir o socket.",
+        time: "Sun Nov 01 2020 17:18:15 GMT-0300"
+    }
+]
+let users = [
+{
+            id: 1,
+            name: "ExampleUser",
+            image: "https://rodcordeiro.github.io/shares/img/rodrobo.jpg"
+        },
+        {
+            id: 2,
+            name: "RodCordeiro",
+            image: "https://rodcordeiro.github.io/shares/img/me.png"
+        },
+        {
+            id: 3,
+            name: "Another Example User",
+            image: "https://rodcordeiro.github.io/shares/img/luke.png"
+        },
+        {
+            id: 4,
+            name: "Jhon Jhones",
+            image: "https://rodcordeiro.github.io/shares/img/privateinvestocat.jpg"
+        },
+        {
+            id: 5,
+            name: "Mandal Orian",
+            image: "https://rodcordeiro.github.io/shares/img/paisagem2.jpg"
+        },
+        {
+            id: 6,
+            name: "VaderMaster123",
+            image: "https://rodcordeiro.github.io/shares/img/vader.png"
+        },
+        
+]
+messages.map(message=>renderMessage(message))
+users.map(async(user)=>{
+    createUser(user)}
+    )
+removeUser(5)
 
-        
-        
->>>>>>> d2f05241ac2d70e413bdd9891457a32f369bc6f2
     </script>
-    <script src="./main.js"></script>
 </body>
 </html>
