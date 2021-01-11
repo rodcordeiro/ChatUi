@@ -185,15 +185,46 @@ async function getImage(){
 class User {
     constructor(){
         this.id = 0;
-        this.name = 'Unnamable'
+        this.name = 'Unnamable';
         this.image = 'https://www.placecage.com/c/600/601';
+        this.status = 'Undefined';
     }
-    async create(id){
-        this.id = id
+    async create(id=0){
+        let u = await localStorage.getItem('user')
+        if (u){
+            u = JSON.parse(u)
+            this.id = u.id
+            this.image = u.image
+            this.name = u.name
+            this.status = u.status
+        } else {
+            this.id = id
+            this.image = await getImage()
+        }
         // this.name = prompt("Hey, what's your name?")
-        this.image = await getImage()
         
-        let ProfInfo = document.querySelector('#profileImage')
-        ProfInfo.src = this.image
+        
+        let ProfileInfo = document.querySelector('.UserInformation')
+
+        let pic = document.createElement('img');
+        pic.setAttribute('src', this.image)
+        pic.setAttribute('alt', 'Profile image')
+        ProfileInfo.appendChild(pic)
+
+        let profileText = document.createElement('div');
+        profileText.setAttribute('class','ptext')
+
+        let profileUsername = document.createElement('h3')
+        let profileUsernameText = document.createTextNode(this.name)
+        profileUsername.appendChild(profileUsernameText)
+
+        let profileStatus = document.createElement('p')
+        let profileStatusText = document.createTextNode(this.status)
+        profileStatus.appendChild(profileStatusText)
+
+        profileText.appendChild(profileUsername)
+        profileText.appendChild(profileStatus)
+
+        ProfileInfo.appendChild(profileText)
     }
 }
