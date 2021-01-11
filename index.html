@@ -35,21 +35,16 @@
         <aside class="users">
             
         </aside>
+        <aside class="UserInformation">
+            <img id="profileImage" alt="Profile image">
+            <div class="ptext">
+                <h3>Nome do usuárioNome do usuário</h3>
+                <p>Status</p>
+            </div>
+        </aside>
         <section class="chat">
             <div class="messages">
-                <div class="message">
-                    <img src="https://images.unsplash.com/photo-1603830187542-2014f36036e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyNzg0MX0" alt="User Image" class="uImg">
-                    <div class="textContainer">
-                        <p class="author">
-                            RodCordeiro
-                        </p>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet repudiandae, repellendus voluptas nemo a non repellat reiciendis ea quis aspernatur sed nobis explicabo, doloremque exercitationem voluptatem nulla qui accusantium!
-                        </p>
-                        <p class="time">12:20</p>
-                    </div>
-                </div>
-                 -->
+                
             </div>
             <div class="userInput">
                 <button type="button" class="emoji" onclick="handleEmojisField()">
@@ -112,10 +107,49 @@ let messages = [
         },
         text: "O chat já está funcional e passível de interação, agora é necessário implementar os emojis e o controle de usuário para incluir o socket.",
         time: "Sun Nov 01 2020 17:18:15 GMT-0300"
+    },{
+        id:5,
+        author:{
+            id: 3,
+            name: "RodRobo",
+            image: "https://rodcordeiro.github.io/shares/img/avatar.png"
+        },
+        text: "Ok, agora temos a área do usuário",
+        time: "Sun Nov 01 2020 17:18:15 GMT-0300"
     }
 ]
 let users = [
 {
+            id: 1,
+            name: "ExampleUser",
+            image: "https://rodcordeiro.github.io/shares/img/rodrobo.jpg"
+        },
+        {
+            id: 2,
+            name: "RodCordeiro",
+            image: "https://rodcordeiro.github.io/shares/img/me.png"
+        },
+        {
+            id: 3,
+            name: "Another Example User",
+            image: "https://rodcordeiro.github.io/shares/img/luke.png"
+        },
+        {
+            id: 4,
+            name: "Jhon Jhones",
+            image: "https://rodcordeiro.github.io/shares/img/privateinvestocat.jpg"
+        },
+        {
+            id: 5,
+            name: "Mandal Orian",
+            image: "https://rodcordeiro.github.io/shares/img/paisagem2.jpg"
+        },
+        {
+            id: 6,
+            name: "VaderMaster123",
+            image: "https://rodcordeiro.github.io/shares/img/vader.png"
+        },
+        {
             id: 1,
             name: "ExampleUser",
             image: "https://rodcordeiro.github.io/shares/img/rodrobo.jpg"

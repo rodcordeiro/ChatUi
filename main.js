@@ -192,6 +192,8 @@ class User {
         this.id = id
         // this.name = prompt("Hey, what's your name?")
         this.image = await getImage()
-        createUser(this)
+        
+        let ProfInfo = document.querySelector('#profileImage')
+        ProfInfo.src = this.image
     }
 }

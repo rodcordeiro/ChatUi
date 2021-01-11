@@ -1,16 +1,24 @@
+@import url('http://rodcordeiro.github.io/shares/fonts/Aurebesh/font.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab&family=Roboto:ital,wght@0,100;0,400;0,700;1,400;1,700&display=swap');
+
 /* 
 https://colorhunt.co/palette/206664
 #eeeeee 
 #32e0c4
 #0d7377
 #212121
+
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Mono', monospace;
+font-family: 'Roboto Slab', serif;
+font-family: 'Aurebesh';
 */
 
 
 *{
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 .container{
     display: grid;
@@ -18,7 +26,7 @@ https://colorhunt.co/palette/206664
     width: 100vw;
     overflow: hidden;
     grid-template-areas: "UA MA"
-    "UA IA";
+    "UI IA";
     grid-template-columns: 250px auto;
     grid-template-rows: 85vh 15vh;
 
@@ -130,7 +138,8 @@ aside.users {
     margin-bottom: 10px;
     white-space: word-break;
     
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-family: 'Aurebesh';
 }
 .textContainer .time {
     font-family: 'Courier New', Courier, monospace;
@@ -209,6 +218,9 @@ i{
     display: none;
 }
 
+#emojis>span{
+    cursor: pointer;
+}
 .hidden{
     visibility: hidden;
 }
@@ -237,6 +249,37 @@ i{
     background-color: #32e0c466;
     color: gray;
 }
+
+.UserInformation{
+    background: linear-gradient(180deg, #333333 0%, transparent 25%);
+    grid-area: UI;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.UserInformation img{
+    height: 60px;
+    width: 60px;
+    border-radius: 60px;
+}
+.UserInformation .ptext{
+    color: white;
+    
+
+}
+.UserInformation .ptext h3{
+    width:150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Roboto Mono', monospace;
+}
+.UserInformation .ptext p{
+    font-size: .9rem;
+    font-family: 'Roboto Slab', serif;
+}
 @media  screen and (max-width: 768px) {
     .container{
         grid-template-areas: "MA"
@@ -250,4 +293,7 @@ i{
         left:5%;
     
     }    
+    .userInput input, .userInput input:focus{
+        width: 100%;
+    }
 }
