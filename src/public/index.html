@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RodCord</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <link rel="stylesheet" href="main.css">
+
+    <!-- FAVICON -->
+	<link rel="apple-touch-icon" sizes="57x57" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/favicon-16x16.png">
+	<link rel="manifest" href="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/manifest.json">
+	<meta name="msapplication-TileImage" content="HTTPS://rodcordeiro.github.io/shares/favicons/favicon-rc/ms-icon-144x144.png">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="login" class="hidden">
+            <img src="https://rodcordeiro.github.io/shares/img/RC-W.png"/>
+            <form>
+                <input type="text" id="name" placeholder="Nickname" />
+                <input type="url" id="img" placeholder="Your avatar image" />
+                <input type="text" id="status" placeholder="Let a status message" />
+                <button type="button" id="loginBtn" onclick="handleUserLogin()">
+                    Entrar
+                </button>
+            </form>
+        </div>
+        <aside class="users">
+            
+        </aside>
+        <aside class="UserInformation">
+            
+        </aside>
+        <section class="chat">
+            <div class="messages">
+                
+            </div>
+            <div class="userInput">
+                <button type="button" class="emoji" onclick="handleEmojisField()">
+                    <i data-feather="smile"></i>
+                </button>
+                <div id="emojis" class="hidden">                    
+                </div>
+                <input type="text" name="msgInput" id="msgInput" placeholder="Type your message">
+                <button type="button" class="send" onclick="submitHandler()" >
+                    <i data-feather="send"></i>
+                </button>
+                
+            </div>
+        </section>
+    </div>
+    <script src="./main.js"></script>
+    <script>
+        const user = new User()
+       
+        if(!localStorage.getItem('user')){
+            document.getElementById('login').classList.remove('hidden')
+        } else {
+            let u = localStorage.getItem('user')
+            u = JSON.parse(u)
+            let socketId = socket.id
+            let userId = u.userId
+            let image = u.image
+            let name = u.name
+            let status = u.status
+            user.create(userId,socketId,name,image,status)
+        }
+        feather.replace()
+        emoji.build()
+        
+        function handleUserLogin(){
+            let name = document.querySelector('#name').value
+            let image = document.querySelector('#img').value
+            let socketId = socket.id
+            let userId = Math.floor(Math.random()*10000);
+            if(image){
+                if(!isValidHttpUrl(image)) {
+                    alert('You must provide a valide image\'s URL. If not provided, it will be random.')
+                    return;
+                }
+            }
+            let status = document.querySelector('#status').value
+            user.create(userId,socketId,name,image,status)
+            document.getElementById('login').classList.add('hidden')
+        } 
+
+    </script>
+</body>
+</html>
