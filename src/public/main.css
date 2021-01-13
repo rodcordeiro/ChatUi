@@ -86,6 +86,7 @@ aside.users {
     background-color: #181818;
     border-right: 3px solid #21212121;
     overflow-y: scroll;
+    scrollbar-color: #0d7377cc transparent;
 }
 
 .users::-webkit-scrollbar{
@@ -127,6 +128,7 @@ aside.users {
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
+    scrollbar-color: #0d7377cc transparent;
 }
 .messages::-webkit-scrollbar{
     width: 10px;
