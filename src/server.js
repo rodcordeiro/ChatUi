@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv')
+dotenv.config()
 
 const app = express();
 const server = require('http').createServer(app);
@@ -23,7 +25,6 @@ let users = [];
 
 io.on('connection', socket => {
   socket.on("registerUser",data => {
-      console.log(data)
     data.id = socket.id
     users.push(data)
     socket.broadcast.emit('newUser',data);

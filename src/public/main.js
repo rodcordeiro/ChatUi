@@ -1,4 +1,4 @@
-const socket=io('http://localhost:3000/')
+const socket=io(process.env.SOCKET_URL)
         
 const admin = {
     id: 1,
@@ -274,7 +274,7 @@ socket.on('previowsUsers',function(users){
             if(u.getAttribute("key") == user.userId){
                 exists = true
             }
-            console.log(exists,u.getAttribute("key"),user.userId,u.getAttribute("key") == user.userId)
+            
         })  
         
         
@@ -292,7 +292,7 @@ socket.on('newUser',function(user){
         if(u.getAttribute("key") == user.userId){
             exists = true
         }
-        console.log(exists,u.getAttribute("key"),user.userId,u.getAttribute("key") == user.userId)
+        
     })  
     
     
