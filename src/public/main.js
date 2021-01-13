@@ -1,4 +1,4 @@
-const socket=io(process.env.SOCKET_URL)
+const socket=io("https://rodchat.herokuapp.com/")
         
 const admin = {
     id: 1,
